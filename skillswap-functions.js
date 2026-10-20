@@ -1,4 +1,4 @@
-// Filter Skills Code
+//#region Filter Skills Code
 function filterSkillsByCategory(skills, category) {
     if(skills == null) {
         throw new Error("Argument Exception, skills is null.");
@@ -20,6 +20,19 @@ function filterSkillsByCategory(skills, category) {
 
     return filteredSkills;  
 }
+//#endregion
 
-//module.exports = {filterSkillsByCategory};
-export {filterSkillsByCategory};
+//#region calculate total cost code 
+function calculateTotalCost(hourlyRate,hours) {
+    if(hourlyRate < 0.0) {
+        throw new Error("Argument error, hourlyRate is negative.");
+    }
+    if(hours < 0.0) {
+        throw new Error("Argument error, hours is negative.");
+    }
+
+    return (hourlyRate * hours).toFixed(2);
+}
+//#endregion
+//module.exports = {filterSkillsByCategory, calculateTotalCost};
+export {filterSkillsByCategory, calculateTotalCost};

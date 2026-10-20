@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Swap</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
 </head>
 <body>
     <header id="top-of-page">
@@ -28,7 +28,12 @@
         </section>
 
         <section class="content-section offerings" aria-labelledby="offerings-heading" id="browse-skills">
-            <h2 id="offerings-heading">Skill Offerings</h2>
+            <div class="flex-box">
+                <h2 id="offerings-heading">Skill Offerings</h2>
+                <input type="search" id="filter-search" placeholder="filter by category">
+                <input type="button" id="filter-button" value="Filter">
+                <input type="button" id="reset-filter-button" value="reset Filters">
+            </div>
             <p>Hover over or focus a card to see more session details.</p>
             <div class="offerings-grid" id="offerings-grid">
                 <!-- Skill Cards Go Here -->

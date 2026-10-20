@@ -21,4 +21,5 @@ function filterSkillsByCategory(skills, category) {
     return filteredSkills;  
 }
 
-module.exports = {filterSkillsByCategory};
+//module.exports = {filterSkillsByCategory};
+export {filterSkillsByCategory};

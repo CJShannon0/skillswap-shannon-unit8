@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Swap</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
 </head>
 <body>
     <header id="top-of-page">
@@ -28,39 +28,15 @@
         </section>
 
         <section class="content-section offerings" aria-labelledby="offerings-heading" id="browse-skills">
-            <h2 id="offerings-heading">Skill Offerings</h2>
+            <div class="flex-box">
+                <h2 id="offerings-heading">Skill Offerings</h2>
+                <input type="search" id="filter-search" placeholder="filter by category">
+                <input type="button" id="filter-button" value="Filter">
+                <input type="button" id="reset-filter-button" value="reset Filters">
+            </div>
             <p>Hover over or focus a card to see more session details.</p>
-            <div class="offerings-grid">
-                <article class="skill-card" tabindex="0">
-                    <button class="skill-card-collapse" type="button" aria-label="Hide Algebra Tutoring offering">&minus;</button>
-                    <div class="skill-card-content" id="algebra-content">
-                        <h3>Algebra Tutoring</h3>
-                        <p>Build confidence with equations, graphing, and exam prep in a friendly one-on-one session.</p>
-                        <p class="skill-card-details"><strong>Price:</strong> $15 per session</p>
-                        <p class="skill-card-details"><strong>Provider:</strong> Maya Chen</p>
-                        <p class="skill-card-extra" id="algebra-details"><strong>Session details:</strong> 45 minutes, online or at the campus library. Bring a topic or homework question to work through.</p>
-                    </div>
-                </article>
-                <article class="skill-card" tabindex="0">
-                    <button class="skill-card-collapse" type="button" aria-label="Hide Beginner Guitar offering">&minus;</button>
-                    <div class="skill-card-content" id="guitar-content">
-                        <h3>Beginner Guitar</h3>
-                        <p>Learn essential chords, strumming patterns, and how to play your first songs.</p>
-                        <p class="skill-card-details"><strong>Price:</strong> $20 per session</p>
-                        <p class="skill-card-details"><strong>Provider:</strong> Jordan Lee</p>
-                        <p class="skill-card-extra" id="guitar-details"><strong>Session details:</strong> 60 minutes, in person. A guitar is available to borrow during the lesson.</p>
-                    </div>
-                </article>
-                <article class="skill-card" tabindex="0">
-                    <button class="skill-card-collapse" type="button" aria-label="Hide Python Basics offering">&minus;</button>
-                    <div class="skill-card-content" id="python-content">
-                        <h3>Python Basics</h3>
-                        <p>Get started with Python fundamentals and write a small project of your own.</p>
-                        <p class="skill-card-details"><strong>Price:</strong> $18 per session</p>
-                        <p class="skill-card-details"><strong>Provider:</strong> Sam Rivera</p>
-                        <p class="skill-card-extra" id="python-details"><strong>Session details:</strong> 45 minutes, online. No prior coding experience is needed; bring a laptop if you have one.</p>
-                    </div>
-                </article>
+            <div class="offerings-grid" id="offerings-grid">
+                <!-- Skill Cards Go Here -->
             </div>
         </section>
 

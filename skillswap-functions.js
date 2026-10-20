@@ -34,5 +34,5 @@ function calculateTotalCost(hourlyRate,hours) {
     return (hourlyRate * hours).toFixed(2);
 }
 //#endregion
-module.exports = {filterSkillsByCategory, calculateTotalCost};
-//export {filterSkillsByCategory, calculateTotalCost};
+//module.exports = {filterSkillsByCategory, calculateTotalCost};
+export {filterSkillsByCategory, calculateTotalCost};

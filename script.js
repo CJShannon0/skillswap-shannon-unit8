@@ -1,4 +1,4 @@
-import { filterSkillsByCategory } from "./skillswap-functions.js";
+import {filterSkillsByCategory,calculateTotalCost } from "./skillswap-functions.js";
 
 //#region Filter Skills Code
 class Skill {
@@ -94,4 +94,16 @@ const setCardExpanded = (card, expanded) => {
 const toggleCardCollapsed = (card) => {
     card.classList.toggle("is-collapsed");
 };
+//#endregion
+
+//#region Cost Calculator Code
+let result = document.getElementById("cost-calculator-result");
+
+document.getElementById("calculate-cost-button").addEventListener("click",() => {
+    let rate = document.getElementById("hourly-rate").value;
+    let hours = document.getElementById("session-hours").value;
+    if(rate == null || hours == null) return;
+
+    result.value = "$" + calculateTotalCost(rate,hours);
+})    
 //#endregion

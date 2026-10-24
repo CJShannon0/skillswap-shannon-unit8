@@ -34,5 +34,22 @@ function calculateTotalCost(hourlyRate,hours) {
     return (hourlyRate * hours).toFixed(2);
 }
 //#endregion
-//module.exports = {filterSkillsByCategory, calculateTotalCost};
-export {filterSkillsByCategory, calculateTotalCost};
+
+//#region match skills to user code
+function matchSkillsToUser(userNeeds,skills) {
+    arrayToReturn = [];
+
+    skills = filterSkillsByCategory(skills,userNeeds.category);
+
+    skills.forEach((skill) => {
+        if(skill.price <= userNeeds.price) {
+            arrayToReturn.push(skill);
+        }
+    })
+
+    return arrayToReturn;
+}
+//#endregion
+
+module.exports = {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+//export {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};

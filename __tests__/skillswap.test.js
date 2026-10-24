@@ -1,4 +1,4 @@
-const {filterSkillsByCategory, calculateTotalCost} = require('../skillswap-functions.js');
+const {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser} = require('../skillswap-functions.js');
 
 const skills = [
     { title: 'Python Tutoring', category: 'Programming', price: 20 },
@@ -73,5 +73,55 @@ describe("Calculate total cost", () => {
         expect(() => calculateTotalCost(-1.1,-1.1)).toThrow(Error);
         expect(() => calculateTotalCost(1.1,-1.1)).toThrow(Error);
     })
+});
+//#endregion
+
+//#region Tests for matchSkillsToUser(userNeeds,skills)
+userNeeds1 = {category: 'Programming' , price: 50};
+userNeeds2 = {category: 'Career' , price: 0};
+userNeeds3 = {category: 'Programming' , price: 30};
+userNeeds4 = {category: 'Programming' , price: 22};
+userNeeds5 = {category: 'all', price: -5};
+userNeeds6 = {category: 'cooking', price: 100};
+
+describe("Calculate total cost", () => {
+    test("should match categories", () => {
+        expect(matchSkillsToUser(userNeeds1,skills)).toStrictEqual(
+            [
+                { title: 'Python Tutoring', category: 'Programming', price: 20 },
+                { title: 'Web Development', category: 'Programming', price: 25 }
+            ]
+        )
+        expect(matchSkillsToUser(userNeeds2,skills)).toStrictEqual(
+            [
+                { title: 'Resume Review', category: 'Career', price: 0 }
+            ]
+        )
+    });
+
+    test("should filter by max price", () => {
+        expect(matchSkillsToUser(userNeeds3,skills)).toStrictEqual(
+            [
+                { title: 'Python Tutoring', category: 'Programming', price: 20 },
+                { title: 'Web Development', category: 'Programming', price: 25 }
+            ]
+        )
+        expect(matchSkillsToUser(userNeeds4,skills)).toStrictEqual(
+            [
+                { title: 'Python Tutoring', category: 'Programming', price: 20 }
+            ]
+        )
+    });
+
+    test("should return an empty array if category or price don't match", () => {
+        expect(matchSkillsToUser(userNeeds5,skills)).toStrictEqual(
+            [
+            ]
+        )
+        expect(matchSkillsToUser(userNeeds6,skills)).toStrictEqual(
+            [
+            ]
+        )
+    });
 });
 //#endregion

@@ -37,7 +37,11 @@ function calculateTotalCost(hourlyRate,hours) {
 
 //#region match skills to user code
 function matchSkillsToUser(userNeeds,skills) {
+<<<<<<< HEAD
     let arrayToReturn = [];
+=======
+    arrayToReturn = [];
+>>>>>>> da5deda (Wrote function for matching user needs and performed successful tests on it.)
 
     skills = filterSkillsByCategory(skills,userNeeds.category);
 
@@ -51,5 +55,10 @@ function matchSkillsToUser(userNeeds,skills) {
 }
 //#endregion
 
+<<<<<<< HEAD
 //module.exports = {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
 export {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+=======
+module.exports = {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+//export {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+>>>>>>> da5deda (Wrote function for matching user needs and performed successful tests on it.)

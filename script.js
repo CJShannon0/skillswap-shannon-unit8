@@ -1,6 +1,6 @@
-import {filterSkillsByCategory,calculateTotalCost } from "./skillswap-functions.js";
+import {filterSkillsByCategory,calculateTotalCost, matchSkillsToUser} from "./skillswap-functions.js";
 
-//#region Filter Skills Code
+//#declaration of skill class and database
 class Skill {
     constructor(title, category, tutor, price) {
         this.title = title;
@@ -29,6 +29,7 @@ const skills = [
     new Skill('Web Development','Programming','Person 1', 25) 
 ];
 
+//#region Filter Skills Code
 let skillCardContainer = document.getElementById("offerings-grid");
 printSkillCards(skills);
 
@@ -36,22 +37,22 @@ let filterSearch = document.getElementById("filter-search");
 document.getElementById("filter-button").addEventListener("click", () => {
     clearSkillCards();
     let filteredList = filterSkillsByCategory(skills,filterSearch.value);
-    printSkillCards(filteredList);
+    printSkillCards(skillCardContainer, filteredList);
 });
 document.getElementById("reset-filter-button").addEventListener("click", () => {
-    clearSkillCards();
+    clearSkillCards(skillCardContainer);
     filterSearch.value = "";
     let unfilteredList = filterSkillsByCategory(skills,'all');
-    printSkillCards(unfilteredList);
+    printSkillCards(skillCardContainer, unfilteredList);
 });
 
-function printSkillCards(skillArray) {
+function printSkillCards(container, skillArray) {
     skillArray.forEach((skill) => {
-        skillCardContainer.insertAdjacentHTML("beforeend",skill.getHTML());
+        container.insertAdjacentHTML("beforeend",skill.getHTML());
     });
 }
-function clearSkillCards() {
-    skillCardContainer.innerHTML = "";
+function clearSkillCards(container) {
+    container.innerHTML = "";
 }
 //#endregion
 
@@ -105,5 +106,20 @@ document.getElementById("calculate-cost-button").addEventListener("click",() => 
     if(rate == null || hours == null) return;
 
     result.value = "$" + calculateTotalCost(rate,hours);
+})    
+//#endregion
+
+//#region MatchUserToSkills
+let matchListContainer = document.getElementById("match-results-content");
+
+document.getElementById("match-results-button").addEventListener("click",() => {
+    let userNeeds = {
+        category: document.getElementById("match-category").value,
+        price: document.getElementById("match-max-price").value
+    };
+    if(rate == null || hours == null) return;
+
+    let filteredList = matchSkillsToUser(userNeeds,skills);
+    printSkillCards(matchListContainer, filteredList);
 })    
 //#endregion

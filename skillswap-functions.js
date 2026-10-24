@@ -51,5 +51,5 @@ function matchSkillsToUser(userNeeds,skills) {
 }
 //#endregion
 
-module.exports = {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
-//export {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+//module.exports = {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};
+export {filterSkillsByCategory, calculateTotalCost, matchSkillsToUser};

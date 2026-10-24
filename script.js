@@ -26,16 +26,16 @@ const skills = [
     new Skill('Python Tutoring','Programming','Person 1', 20),
     new Skill('Guitar Lessons','Music','Person 2', 15),
     new Skill('Resume Review','Career','Person 3', 0),
-    new Skill('Web Development','Programming','Person 1', 25) 
+    new Skill('Web Development','Programming','Person 1', 25)
 ];
 
 //#region Filter Skills Code
 let skillCardContainer = document.getElementById("offerings-grid");
-printSkillCards(skills);
+printSkillCards(skillCardContainer, skills);
 
 let filterSearch = document.getElementById("filter-search");
 document.getElementById("filter-button").addEventListener("click", () => {
-    clearSkillCards();
+    clearSkillCards(skillCardContainer);
     let filteredList = filterSkillsByCategory(skills,filterSearch.value);
     printSkillCards(skillCardContainer, filteredList);
 });
@@ -117,7 +117,7 @@ document.getElementById("match-results-button").addEventListener("click",() => {
         category: document.getElementById("match-category").value,
         price: document.getElementById("match-max-price").value
     };
-    if(rate == null || hours == null) return;
+    if(userNeeds.category == null || userNeeds.price == null) return;
 
     let filteredList = matchSkillsToUser(userNeeds,skills);
     printSkillCards(matchListContainer, filteredList);

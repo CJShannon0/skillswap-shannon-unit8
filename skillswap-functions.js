@@ -37,7 +37,7 @@ function calculateTotalCost(hourlyRate,hours) {
 
 //#region match skills to user code
 function matchSkillsToUser(userNeeds,skills) {
-    arrayToReturn = [];
+    let arrayToReturn = [];
 
     skills = filterSkillsByCategory(skills,userNeeds.category);
 
